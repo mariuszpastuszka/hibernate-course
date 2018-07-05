@@ -38,6 +38,7 @@ public class AnnotationsIllustrationTest extends TestCase {
         session.beginTransaction();
         session.save(new Person("Mariusz", "P.", 1));
         session.save(new Person("Alicja", "O.", 1));
+        session.save(new Pet("Burek", "Dog", 15));
         session.getTransaction().commit();
         session.close();
 

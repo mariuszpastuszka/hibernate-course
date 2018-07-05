@@ -4,7 +4,7 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="org.hibernate.tutorial.hbm">
+<hibernate-mapping package="pl.mpas.learn_hibernate">
 
     <class name="pl.mpas.learn_hibernate.Person" table="PERSONS">
         <id name="id" column="MY_ID">

@@ -6,9 +6,9 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "MY_EVENTS")
+@Table(name = "EVENTS")
 public class Event {
-    private Long id;
+    private Long idIsNotProperty;
 
     private String title;
     private Date date;
@@ -27,11 +27,11 @@ public class Event {
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     public Long getId() {
-        return id;
+        return idIsNotProperty;
     }
 
     private void setId(Long id) {
-        this.id = id;
+        this.idIsNotProperty = id;
     }
 
     @Temporal(TemporalType.TIMESTAMP)

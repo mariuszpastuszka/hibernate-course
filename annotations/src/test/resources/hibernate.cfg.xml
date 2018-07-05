@@ -32,6 +32,7 @@
         <!-- Names the annotated entity class -->
         <mapping class="pl.mpas.learn_hibernate.Event"/>
         <mapping class="pl.mpas.learn_hibernate.Person"/>
+        <mapping class="pl.mpas.learn_hibernate.Pet"/>
 
     </session-factory>
 
