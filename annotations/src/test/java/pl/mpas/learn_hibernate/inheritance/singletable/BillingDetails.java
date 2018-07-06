@@ -1,7 +1,5 @@
 package pl.mpas.learn_hibernate.inheritance.singletable;
 
-import org.jpwh.model.Constants;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -11,7 +9,7 @@ import javax.validation.constraints.NotNull;
 public abstract class BillingDetails {
 
     @Id
-    @GeneratedValue(generator = Constants.ID_GENERATOR)
+    @GeneratedValue
     protected Long id;
 
     @NotNull // Ignored by Hibernate for schema generation!
