@@ -1,5 +1,6 @@
 package pl.mpas.learn_hibernate.onetomany;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -34,4 +35,10 @@ public class Cart {
         this.items = items;
     }
 
+    public static void main(String[] args) {
+        Cart cart = new Cart();
+        Set<Items> items = new HashSet<>();
+                items.add(new Items(cart));
+        cart.setItems(items);
+    }
 }

@@ -35,6 +35,11 @@
         <mapping class="pl.mpas.learn_hibernate.Person"/>
         <mapping class="pl.mpas.learn_hibernate.Pet"/>
         <mapping class="pl.mpas.learn_hibernate.Player"/>
+        <mapping class="pl.mpas.learn_hibernate.inheritance.singletable.BillingDetails"/>
+        <mapping class="pl.mpas.learn_hibernate.inheritance.singletable.BankAccount"/>
+        <mapping class="pl.mpas.learn_hibernate.inheritance.singletable.CreditCard"/>
+        <mapping class="pl.mpas.learn_hibernate.onetomany.Cart"/>
+        <mapping class="pl.mpas.learn_hibernate.onetomany.Items"/>
 
     </session-factory>
 

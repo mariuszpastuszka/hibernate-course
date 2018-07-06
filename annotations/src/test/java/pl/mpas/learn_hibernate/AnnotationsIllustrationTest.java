@@ -6,9 +6,16 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import pl.mpas.learn_hibernate.inheritance.singletable.BankAccount;
+import pl.mpas.learn_hibernate.inheritance.singletable.BillingDetails;
+import pl.mpas.learn_hibernate.inheritance.singletable.CreditCard;
+import pl.mpas.learn_hibernate.onetomany.Cart;
+import pl.mpas.learn_hibernate.onetomany.Items;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class AnnotationsIllustrationTest extends TestCase {
     private SessionFactory sessionFactory;
@@ -33,6 +40,27 @@ public class AnnotationsIllustrationTest extends TestCase {
         }
     }
 
+    public void testInheritance() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        BillingDetails ba = new BankAccount("Mariusz", "00077", "NBP", "01234");
+        BillingDetails cc = new CreditCard("Me", "12345", "grudzień", "3000");
+        session.save(ba);
+        session.save(cc);
+
+        session.getTransaction().commit();
+        session.close();
+
+
+        session = sessionFactory.openSession();
+        List<BillingDetails> billingDetails = session.createQuery("from BillingDetails", BillingDetails.class).list();
+        for (BillingDetails bd : billingDetails) {
+            System.out.println("Reading BillingDetails from db: " + bd);
+        }
+        session.close();
+    }
+
     public void testStoringPersons() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -51,6 +79,24 @@ public class AnnotationsIllustrationTest extends TestCase {
         session.close();
     }
 
+    public void testOneToMany() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Cart cart = new Cart();
+        Set<Items> items = new HashSet<>();
+        items.add(new Items(cart));
+        items.add(new Items(cart));
+        items.add(new Items(cart));
+        items.add(new Items(cart));
+        cart.setItems(items);
+
+        session.save(cart);
+
+        session.getTransaction().commit();
+        session.close();
+
+    }
     @SuppressWarnings({"unchecked"})
     public void testBasicUsage() {
         // create a couple of events...

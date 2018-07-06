@@ -3,14 +3,7 @@ package pl.mpas.learn_hibernate.onetoone;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class Library {
@@ -20,6 +13,7 @@ public class Library {
     private long id;
 
     @Column
+    @Basic
     private String name;
 
     @OneToOne

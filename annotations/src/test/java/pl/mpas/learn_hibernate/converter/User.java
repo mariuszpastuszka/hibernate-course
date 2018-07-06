@@ -1,6 +1,5 @@
 package pl.mpas.learn_hibernate.converter;
 
-import org.jpwh.model.Constants;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -11,7 +10,7 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue(generator = Constants.ID_GENERATOR)
+    @GeneratedValue
     protected Long id;
 
     @NotNull

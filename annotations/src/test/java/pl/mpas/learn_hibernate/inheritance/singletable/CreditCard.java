@@ -23,6 +23,17 @@ public class CreditCard extends BillingDetails {
         super();
     }
 
+    @Override
+    public String toString() {
+        return "CreditCard{" +
+                "cardNumber='" + cardNumber + '\'' +
+                ", expMonth='" + expMonth + '\'' +
+                ", expYear='" + expYear + '\'' +
+                ", id=" + id +
+                ", owner='" + owner + '\'' +
+                '}';
+    }
+
     public CreditCard(String owner, String cardNumber, String expMonth, String expYear) {
         super(owner);
         this.cardNumber = cardNumber;
