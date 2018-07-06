@@ -10,7 +10,8 @@
 
         <!-- Database connection settings -->
         <property name="connection.driver_class">org.h2.Driver</property>
-        <property name="connection.url">jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE</property>
+        <!--<property name="connection.url">jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE</property>-->
+        <property name="connection.url">jdbc:h2:tcp://localhost/~/db/jdbc-course</property>
         <property name="connection.username">sa</property>
         <property name="connection.password"></property>
 
@@ -33,6 +34,7 @@
         <mapping class="pl.mpas.learn_hibernate.Event"/>
         <mapping class="pl.mpas.learn_hibernate.Person"/>
         <mapping class="pl.mpas.learn_hibernate.Pet"/>
+        <mapping class="pl.mpas.learn_hibernate.Player"/>
 
     </session-factory>
 

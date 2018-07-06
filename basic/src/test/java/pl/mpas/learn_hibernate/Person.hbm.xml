@@ -13,7 +13,7 @@
 
         <property name="name" column="NAME"/>
         <property name="surname" column="SURNAME"/>
-        <property name="salary" column="SALARY"/>
+        <property name="kasaMisia" column="SALARY"/>
     </class>
 
 </hibernate-mapping>
