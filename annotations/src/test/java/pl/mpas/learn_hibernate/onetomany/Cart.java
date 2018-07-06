@@ -2,13 +2,7 @@ package pl.mpas.learn_hibernate.onetomany;
 
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "CART")
@@ -20,7 +14,7 @@ public class Cart {
     private long id;
 
 
-    @OneToMany(mappedBy = "cart")
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
     private Set<Items> items;
 
     public long getId() {
