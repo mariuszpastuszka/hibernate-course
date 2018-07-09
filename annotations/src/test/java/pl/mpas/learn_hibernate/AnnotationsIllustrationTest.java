@@ -6,16 +6,19 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import pl.mpas.learn_hibernate.converter.Address;
+import pl.mpas.learn_hibernate.converter.SwissZipcode;
+import pl.mpas.learn_hibernate.converter.User;
+import pl.mpas.learn_hibernate.converter.Zipcode;
 import pl.mpas.learn_hibernate.inheritance.singletable.BankAccount;
 import pl.mpas.learn_hibernate.inheritance.singletable.BillingDetails;
 import pl.mpas.learn_hibernate.inheritance.singletable.CreditCard;
+import pl.mpas.learn_hibernate.my_converter.PlayerWithSecret;
+import pl.mpas.learn_hibernate.my_converter.Secret;
 import pl.mpas.learn_hibernate.onetomany.Cart;
 import pl.mpas.learn_hibernate.onetomany.Items;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class AnnotationsIllustrationTest extends TestCase {
     private SessionFactory sessionFactory;
@@ -38,6 +41,64 @@ public class AnnotationsIllustrationTest extends TestCase {
         if (sessionFactory != null) {
             sessionFactory.close();
         }
+    }
+
+    public void testUserWithZipCode() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Zipcode zipcode = new SwissZipcode("12345");
+        Address address = new Address("Warszawska", zipcode, "Warszawa");
+        User user = new User();
+        user.setUsername("Mariusz");
+        user.setHomeAddress(address);
+
+        session.save(user);
+
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void testPlayerSecret() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        PlayerWithSecret zero = new PlayerWithSecret("XXXXL",
+                new Secret("mam sekret"));
+
+        session.save(zero);
+
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void testSimpleSearching() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2000, 10, 17);
+        Date eventDate = calendar.getTime();
+
+        Event first = new Event("Our very first event!", new Date());
+        session.save(first);
+        session.save(new Event("A follow up event", new Date()));
+
+        first.setTitle("New title");
+        session.getTransaction().commit();
+
+        session.close();
+
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        List result = session.createQuery("select e from Event e where e.title = :title")
+                .setParameter("title", "Our very first event!")
+                .list();
+        for (Event event : (List<Event>) result) {
+            System.out.println("Event (" + event.getDate() + ") : " + event.getTitle());
+        }
+        session.getTransaction().commit();
+        session.close();
     }
 
     public void testInheritance() {
@@ -97,6 +158,7 @@ public class AnnotationsIllustrationTest extends TestCase {
         session.close();
 
     }
+
     @SuppressWarnings({"unchecked"})
     public void testBasicUsage() {
         // create a couple of events...

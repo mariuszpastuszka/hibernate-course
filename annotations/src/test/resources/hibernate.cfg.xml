@@ -40,6 +40,13 @@
         <mapping class="pl.mpas.learn_hibernate.inheritance.singletable.CreditCard"/>
         <mapping class="pl.mpas.learn_hibernate.onetomany.Cart"/>
         <mapping class="pl.mpas.learn_hibernate.onetomany.Items"/>
+        <mapping class="pl.mpas.learn_hibernate.converter.User"/>
+        <mapping class="pl.mpas.learn_hibernate.converter.Zipcode"/>
+        <mapping class="pl.mpas.learn_hibernate.converter.Address"/>
+        <mapping class="pl.mpas.learn_hibernate.converter.GermanZipcode"/>
+        <mapping class="pl.mpas.learn_hibernate.converter.SwissZipcode"/>
+        <mapping class="pl.mpas.learn_hibernate.my_converter.PlayerWithSecret"/>
+
 
     </session-factory>
 

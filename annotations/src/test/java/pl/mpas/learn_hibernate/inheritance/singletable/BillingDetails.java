@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "BD_TYPE")
+//@DiscriminatorColumn(name = "BD_TYPE")
 public abstract class BillingDetails {
 
     @Id
