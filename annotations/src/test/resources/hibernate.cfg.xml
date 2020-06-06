@@ -46,6 +46,7 @@
         <mapping class="pl.mpas.learn_hibernate.converter.GermanZipcode"/>
         <mapping class="pl.mpas.learn_hibernate.converter.SwissZipcode"/>
         <mapping class="pl.mpas.learn_hibernate.my_converter.PlayerWithSecret"/>
+        <mapping class="pl.mpas.learn_hibernate.Dog"/>
 
 
     </session-factory>

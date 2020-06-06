@@ -12,6 +12,17 @@ public class Person {
     private String surname;
     private int salary;
 
+    private Dog dog;
+
+    @OneToOne
+    public Dog getDog() {
+        return dog;
+    }
+
+    public void setDog(Dog dog) {
+        this.dog = dog;
+    }
+
     public Person() {
     }
 
@@ -43,6 +54,7 @@ public class Person {
     }
 
     @Column(name = "NAME")
+//    @Basic - for primitives - do not do it.
     public String getName() {
         return name;
     }

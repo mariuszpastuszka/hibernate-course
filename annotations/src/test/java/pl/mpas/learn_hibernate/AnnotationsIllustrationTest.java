@@ -43,6 +43,22 @@ public class AnnotationsIllustrationTest extends TestCase {
         }
     }
 
+    public void testDogSaving() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Dog dog = new Dog("Azor", 1);
+        System.out.println("Dog - before saving: " + dog);
+        session.save(dog);
+        dog.setAge(2);
+        session.save(dog);
+        System.out.println("Dog - after saving: " + dog);
+
+        session.getTransaction().commit();
+        session.close();
+
+    }
+
     public void testUserWithZipCode() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();

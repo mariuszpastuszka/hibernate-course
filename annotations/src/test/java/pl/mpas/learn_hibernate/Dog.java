@@ -14,6 +14,18 @@ public class Dog {
     String name;
     int age;
 
+    @OneToOne
+    public Person getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Person owner) {
+        this.owner = owner;
+    }
+
+
+    private Person owner;
+
     public Dog()
 
     {
