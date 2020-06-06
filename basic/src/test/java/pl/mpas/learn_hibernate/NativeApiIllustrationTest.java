@@ -70,5 +70,16 @@ public class NativeApiIllustrationTest extends TestCase {
         System.out.println("me after save: " + me);
         session.getTransaction().commit();
         session.close();
+
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Dog myDog = new Dog(null, "Azor", 5);
+        System.out.println("My dog before saving: " + myDog);
+        session.save(myDog);
+        System.out.println("My dog after saving: " + myDog);
+
+        session.close();
+
     }
 }
