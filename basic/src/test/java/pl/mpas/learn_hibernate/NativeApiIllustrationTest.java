@@ -55,6 +55,7 @@ public class NativeApiIllustrationTest extends TestCase {
 
         session = sessionFactory.openSession();
         session.beginTransaction();
+        // JPQL/HQL
         List result = session.createQuery("from Event").list();
         for (Event event : (List<Event>) result) {
             System.out.println("Event (" + event.getDate() + ") : " + event.getTitle());
@@ -78,6 +79,9 @@ public class NativeApiIllustrationTest extends TestCase {
         System.out.println("My dog before saving: " + myDog);
         session.save(myDog);
         System.out.println("My dog after saving: " + myDog);
+
+        session.createQuery("select d from Dog d", Dog.class).list()
+                .forEach(System.out::println);
 
         session.close();
 
