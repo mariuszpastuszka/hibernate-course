@@ -14,7 +14,7 @@ public class Dog {
     String name;
     int age;
 
-    @OneToOne
+    @OneToOne(mappedBy = "dog")
     public Person getOwner() {
         return owner;
     }

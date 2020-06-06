@@ -15,6 +15,7 @@ public class Person {
     private Dog dog;
 
     @OneToOne
+    @JoinColumn(name = "my_dog_id")
     public Dog getDog() {
         return dog;
     }
