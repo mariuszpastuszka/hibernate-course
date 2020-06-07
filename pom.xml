@@ -6,12 +6,14 @@
 
     <groupId>pl.mpas</groupId>
     <artifactId>learn-hibernate</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <modules>
         <module>basic</module>
         <module>annotations</module>
         <module>entitymanager</module>
+        <module>jvm</module>
     </modules>
 
     <dependencies>

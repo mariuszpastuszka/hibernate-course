@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 
 @Entity
-//@DiscriminatorValue("BA")
+@DiscriminatorValue("BA")
 public class BankAccount extends BillingDetails {
 
     @NotNull

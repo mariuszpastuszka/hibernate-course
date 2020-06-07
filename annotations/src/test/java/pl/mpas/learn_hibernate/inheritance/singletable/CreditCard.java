@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 
 @Entity
-//@DiscriminatorValue("CC")
+@DiscriminatorValue("CC")
 public class CreditCard extends BillingDetails {
 
     @NotNull // Ignored by Hibernate for DDL generation!

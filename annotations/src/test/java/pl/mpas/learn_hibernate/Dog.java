@@ -9,12 +9,19 @@ import javax.persistence.*;
 @Table(name = "Dogs")
 public class Dog {
 
+    @Id
 
+    @GeneratedValue(generator = "increment")
+
+    @GenericGenerator(name = "increment", strategy = "increment")
     Long Id;
+    @Column(name = "Name")
+
     String name;
+    @Column(name = "Age")
     int age;
 
-    @OneToOne(mappedBy = "dog")
+
     public Person getOwner() {
         return owner;
     }
@@ -22,7 +29,7 @@ public class Dog {
     public void setOwner(Person owner) {
         this.owner = owner;
     }
-
+    @OneToOne(mappedBy = "dog")
 
     private Person owner;
 
@@ -41,11 +48,7 @@ public class Dog {
 
     }
 
-    @Id
 
-    @GeneratedValue(generator = "increment")
-
-    @GenericGenerator(name = "increment", strategy = "increment")
 
     public Long getId() {
 
@@ -54,7 +57,6 @@ public class Dog {
     }
 
 
-    @Column(name = "Name")
 
     public String getName() {
 
@@ -63,7 +65,6 @@ public class Dog {
     }
 
 
-    @Column(name = "Age")
 
     public int getAge() {
 
