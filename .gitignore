@@ -29,4 +29,5 @@ hs_err_pid*
 /basic/hibernate-tutorial-hbm.iml
 /learnhibernate.iml
 /.idea/
+*iml
 /entitymanager/target/
